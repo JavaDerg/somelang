@@ -24,8 +24,20 @@
 
 # Operators
 ```regexp
-[+\-*/%!|&^<>]
+(\.{2,3}|>=|<=|<<|>>|[+\-*/%!|&^<>])
+```
+
+# Generic
+```regexp
+\b'IDENTIFIER\b
+```
+
+# Char
+```regexp
+'(ESCAPECODES|[^'])'
 ```
 
 # Strings
-stuff
+```regexp
+"(ESCAPECODES|[^"]*)"
+```

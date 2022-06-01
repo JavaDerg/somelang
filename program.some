@@ -1,0 +1,12 @@
+type data 'IO State (
+    count u32,
+)
+
+fn 'IO 'State inc_print(state 'State) 'State -> {
+    print state.count
+    State
+}
+
+fn 'IO main() -> {
+
+}

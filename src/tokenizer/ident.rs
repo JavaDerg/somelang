@@ -3,13 +3,18 @@ use nom::bytes::complete::{tag, take_while, take_while1};
 use nom::combinator::recognize;
 use nom::sequence::tuple;
 use nom::IResult;
+use nom_locate::LocatedSpan;
 
-pub struct Literal(String);
+type Span<'a> = LocatedSpan<&'a str>;
 
-pub fn ident(i: &str) -> IResult<&str, Literal> {
-    let (i, l) = recognize(tuple((
+pub fn ident(i: Span) -> IResult<Span, Span> {
+    recognize(tuple((
         take_while1(|c: char| c == '_' || c.is_alphabetic()),
         take_while(|c: char| c == '_' || c.is_alphanumeric()),
-    )))(i)?;
-    Ok((i, Literal(l.to_string())))
+    )))(i)
+}
+
+pub fn generic(i: Span) -> IResult<Span, Span> {
+    let (i, _) = tag("'")(i)?;
+    ident(i)
 }
