@@ -1,0 +1,13 @@
+[package]
+name = "somelang"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+nom = "7.1.1"
+nom_locate = "4.0.0"
+eyre = "0.6.8"
+color-eyre = "0.6.1"
+
+[dev-dependencies]
+pretty_assertions = "1.2.1"
